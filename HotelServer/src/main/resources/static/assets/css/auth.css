@@ -1,0 +1,84 @@
+/* ==========================================================================
+   Luna Cove — Auth Pages (Login / Register)
+   ========================================================================== */
+
+.auth-page {
+    min-height: 100vh;
+    background: var(--color-bg);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+}
+
+.auth-bg {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+.auth-scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(8,8,9,0.92), rgba(8,8,9,0.78));
+}
+
+.auth-topbar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+}
+.auth-topbar .nav-brand .brand-title { color: #fff; }
+
+.auth-shell {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 460px;
+    padding: var(--space-2xl) var(--space-xl);
+    margin-top: var(--space-2xl);
+}
+
+.auth-shell .eyebrow { color: var(--color-gold-light); }
+.auth-shell h1 {
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    margin-bottom: var(--space-2xs);
+}
+.auth-shell .auth-sub { color: rgba(255,255,255,0.6); font-size: 0.92rem; margin-bottom: var(--space-lg); }
+
+.auth-divider-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-lg); }
+
+.auth-switch {
+    text-align: center;
+    margin-top: var(--space-lg);
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+}
+.auth-switch a { color: var(--color-gold-light); font-weight: 500; border-bottom: 1px solid transparent; }
+.auth-switch a:hover { border-color: var(--color-gold-light); }
+
+.forgot-link {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    transition: color var(--t-fast);
+}
+.forgot-link:hover { color: var(--color-gold-light); }
+
+.auth-back-home {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.auth-back-home:hover { color: var(--color-gold-light); }
+
+@media (max-width: 560px) {
+    .auth-shell { padding: var(--space-xl) var(--space-md); margin-top: var(--space-xl); }
+    .auth-topbar { position: static; padding: var(--space-md); }
+}

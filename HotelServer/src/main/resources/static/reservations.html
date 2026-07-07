@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Cove | Reserve Your Table</title>
+    <script src="server-redirect.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/reservation.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="reservation-page" data-requires-auth>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="page-veil"><div class="page-veil-mark">LUNA COVE<div class="page-veil-bar"></div></div></div>
+
+<nav class="site-nav is-light is-scrolled">
+    <a class="nav-brand" href="index.html" aria-label="Luna Cove home">
+        <span class="brand-title">LUNA COVE</span>
+        <span class="brand-subtitle">Bespoke Dining</span>
+    </a>
+    <div class="nav-links">
+        <a href="tables.html" class="nav-link">Tables</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="reservations.html" class="nav-link is-active">Reservations</a>
+        <a href="profile.html#feedback" class="nav-link">Feedback</a>
+    </div>
+    <div class="nav-actions">
+        <a href="profile.html" class="nav-user-chip">
+            <span class="avatar-circle" data-user-initials>GU</span>
+            <span data-user-label>Guest</span>
+        </a>
+        <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main id="main">
+    <section class="reservation-hero">
+        <div class="container">
+            <p class="eyebrow reveal">Concierge Booking</p>
+            <h1 class="reveal">Reserve Your Table</h1>
+            <p class="reveal">Select a tier, choose your preferred table, and confirm your visit in just a few moments.</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: var(--space-xl);">
+        <div class="container">
+
+            <div id="bookingStep">
+                <div class="steps-row reveal">
+                    <div class="step-pill is-active"><span class="step-num">1</span> Select Table</div>
+                    <div class="step-connector"></div>
+                    <div class="step-pill is-active"><span class="step-num">2</span> Guest Details</div>
+                    <div class="step-connector"></div>
+                    <div class="step-pill"><span class="step-num">3</span> Confirmation</div>
+                </div>
+
+                <div class="reservation-layout">
+                    <form class="card reservation-form-card reveal" id="reservationForm" novalidate>
+                        <h3 style="margin-bottom: var(--space-md);">Booking Details</h3>
+
+                        <div class="menu-filter-tabs" id="typeTabs" style="margin-bottom: var(--space-md);">
+                            <button class="filter-tab is-active" type="button" data-res-type="SOLO">Solo Lounge</button>
+                            <button class="filter-tab" type="button" data-res-type="DOUBLE">Double Vista</button>
+                            <button class="filter-tab" type="button" data-res-type="DELUXE">Deluxe Estate</button>
+                        </div>
+
+                        <div class="form-field">
+                            <label>Pick A Table</label>
+                            <div class="mini-table-picker" id="miniTablePicker"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="customerName">Guest Name</label>
+                            <input type="text" id="customerName" placeholder="Full name for the reservation" required>
+                        </div>
+
+                        <div class="form-row-2">
+                            <div class="form-field">
+                                <label for="reservationDate">Date</label>
+                                <input type="date" id="reservationDate" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="reservationTime">Arrival Time</label>
+                                <input type="time" id="reservationTime" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row-2">
+                            <div class="form-field">
+                                <label for="checkoutTime">Estimated Checkout</label>
+                                <input type="time" id="checkoutTime" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Guest Count</label>
+                                <div class="guest-stepper">
+                                    <button type="button" id="guestDecrease" aria-label="Decrease guests">&minus;</button>
+                                    <span id="guestCountValue">2</span>
+                                    <button type="button" id="guestIncrease" aria-label="Increase guests">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" type="submit" style="margin-top: var(--space-sm);">Confirm Reservation</button>
+                    </form>
+
+                    <aside class="card reservation-summary-card reveal reveal-delay-1">
+                        <h3 style="margin-bottom: var(--space-md);">Booking Summary</h3>
+                        <div class="summary-row"><span>Table</span><span id="summaryTable">Not selected</span></div>
+                        <div class="summary-row"><span>Tier</span><span id="summaryType">SOLO</span></div>
+                        <div class="summary-row"><span>Guests</span><span id="summaryGuests">2</span></div>
+                        <div class="summary-total"><span>Table Rate</span><strong>LKR <span id="summaryPrice">0.00</span></strong></div>
+                        <p class="field-hint" style="margin-top: var(--space-sm);">Menu items are added after your table is confirmed, on the next screen.</p>
+                    </aside>
+                </div>
+            </div>
+
+            <div id="confirmationStep" class="card confirmation-panel scale-in" hidden>
+                <div class="success-check">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M10 21L17 28L30 13" stroke="#5a8a6b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <p class="eyebrow">Reservation Confirmed</p>
+                <h2>We'll See You Soon</h2>
+                <p class="section-copy">A confirmation has been saved to your profile. You may now build your dining order for this table.</p>
+                <div class="confirmation-details" id="confirmationDetails"></div>
+                <p class="field-hint" id="confirmEmailNote" hidden style="margin-bottom: var(--space-md);"></p>
+
+                <div class="qr-order-panel">
+                    <div class="qr-order-code" id="confirmQrCode"></div>
+                    <div class="qr-order-copy">
+                        <p class="eyebrow" style="margin-bottom: 4px;">Scan To Order From Your Phone</p>
+                        <p class="section-copy" style="font-size: 0.85rem;">Point any phone camera at this code to open your table's ordering screen instantly — no app required.</p>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <a class="btn btn-primary" id="confirmOrderLink" href="table-order.html">Order Food For This Table</a>
+                    <a class="btn btn-ghost" href="profile.html">View My Reservations</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--color-surface);" id="bookings">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Guest Ledger</p>
+                <h2 class="section-title">Your Bookings</h2>
+                <div class="accent-line"></div>
+            </div>
+
+            <article class="card dashboard-card reveal" style="max-width: 640px; margin: 0 auto;">
+                <div class="dashboard-card-head">
+                    <h3 style="margin:0;">Current Bookings</h3>
+                    <span class="badge badge-gold" id="reservationPill">0 active</span>
+                </div>
+                <div id="reservationList"></div>
+                <p class="field-hint" style="margin-top: var(--space-md); text-align:center;">
+                    Want to leave a review? Head to <a class="text-link" href="profile.html#feedback">your profile</a> to rate a past visit.
+                </p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-bottom">
+        <span>&copy; 2026 Luna Cove Estate. All rights reserved.</span>
+        <span>Reservation tools are available after account authentication.</span>
+    </div>
+</footer>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/vendor/qrcode.min.js"></script>
+<script src="assets/js/qr-helper.js"></script>
+<script src="assets/js/reservation.js"></script>
+</body>
+</html>

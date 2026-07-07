@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Cove | Guest Profile</title>
+    <script src="server-redirect.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="profile-page" data-requires-customer>
+
+<div class="page-veil"><div class="page-veil-mark">LUNA COVE<div class="page-veil-bar"></div></div></div>
+
+<nav class="site-nav is-light is-scrolled">
+    <a class="nav-brand" href="index.html" aria-label="Luna Cove home">
+        <span class="brand-title">LUNA COVE</span>
+        <span class="brand-subtitle">Bespoke Dining</span>
+    </a>
+    <div class="nav-links">
+        <a href="reservations.html" class="nav-link">Reservations</a>
+        <a href="tables.html" class="nav-link">Tables</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="profile.html" class="nav-link is-active">My Profile</a>
+    </div>
+    <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" data-logout-button type="button">Sign Out</button>
+        <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main>
+    <section class="profile-hero">
+        <div class="container">
+            <p class="eyebrow reveal">Guest Account Workspace</p>
+            <h1 class="reveal" style="font-size: clamp(2rem, 4vw, 2.8rem);">Your Profile</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="profile-layout">
+
+                <aside class="card profile-identity-card reveal">
+                    <div class="profile-avatar-xl" id="profileInitials">CU</div>
+                    <h1 id="profileDisplayName">Customer</h1>
+                    <p class="profile-email" id="profileDisplayEmail">Loading account…</p>
+                    <div class="profile-stat-row">
+                        <div class="profile-stat"><strong id="statReservations">0</strong><span>Bookings</span></div>
+                        <div class="profile-stat"><strong id="statOrders">0</strong><span>Orders</span></div>
+                    </div>
+                    <p class="field-hint" style="margin-top: var(--space-sm);">Total Spent: <strong id="statSpent">LKR 0.00</strong></p>
+                </aside>
+
+                <section class="reveal reveal-delay-1">
+                    <div class="profile-tabs">
+                        <button class="profile-tab-btn is-active" type="button" data-tab="tabReservations">Reservation History</button>
+                        <button class="profile-tab-btn" type="button" data-tab="tabOrders">Order History</button>
+                        <button class="profile-tab-btn" type="button" data-tab="tabPayments">Payments</button>
+                        <button class="profile-tab-btn" type="button" data-tab="tabFeedback">Feedback</button>
+                        <button class="profile-tab-btn" type="button" data-tab="tabSettings">Settings</button>
+                    </div>
+
+                    <div class="profile-tab-panel is-active" id="tabReservations">
+                        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom: var(--space-md);">
+                            <h2 style="font-size:1.4rem;">Your Reservations</h2>
+                            <span class="badge badge-gold" id="reservationHistoryCount">0 bookings</span>
+                        </div>
+                        <div id="reservationHistoryList"></div>
+                    </div>
+
+                    <div class="profile-tab-panel" id="tabOrders">
+                        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom: var(--space-md);">
+                            <h2 style="font-size:1.4rem;">Ordered Items</h2>
+                            <span class="badge badge-gold" id="menuOrderTotal">LKR 0.00</span>
+                        </div>
+                        <div id="menuOrderList"></div>
+                    </div>
+
+                    <div class="profile-tab-panel" id="tabPayments">
+                        <h2 style="font-size:1.4rem; margin-bottom: var(--space-md);">Payment History</h2>
+                        <div id="paymentHistoryList"></div>
+                    </div>
+
+                    <div class="profile-tab-panel" id="tabFeedback">
+                        <h2 style="font-size:1.4rem; margin-bottom: var(--space-md);">Leave Feedback</h2>
+                        <form id="feedbackForm" class="card" style="padding: var(--space-lg); margin-bottom: var(--space-lg);" novalidate>
+                            <input type="hidden" id="feedbackId">
+                            <div class="form-field">
+                                <label for="feedbackReservationId">Reservation</label>
+                                <select id="feedbackReservationId" required><option value="">Choose a reservation…</option></select>
+                            </div>
+                            <div class="form-field">
+                                <label for="feedbackRating">Rating</label>
+                                <select id="feedbackRating" required>
+                                    <option value="5">5 — Absolute Excellence</option>
+                                    <option value="4">4 — Exceeds Expectations</option>
+                                    <option value="3">3 — Commendable Service</option>
+                                    <option value="2">2 — Fair / Standard</option>
+                                    <option value="1">1 — Substandard Experience</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="feedbackMessage">Notes</label>
+                                <textarea id="feedbackMessage" rows="3" placeholder="Share details about your experience…"></textarea>
+                            </div>
+                            <div style="display:flex; gap: var(--space-sm);">
+                                <button class="btn btn-primary" type="submit" style="flex:1;">Submit Feedback</button>
+                                <button class="btn btn-ghost" id="feedbackCancelEdit" type="button" hidden>Cancel Edit</button>
+                            </div>
+                        </form>
+
+                        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom: var(--space-md);">
+                            <h3 style="font-size: 1.15rem; margin: 0;">Your Reviews</h3>
+                            <span class="badge badge-gold" id="feedbackCount">0 reviews</span>
+                        </div>
+                        <div class="feedback-carousel" id="feedbackCarousel">
+                            <div class="feedback-carousel-viewport">
+                                <div class="feedback-carousel-track" id="feedbackCarouselTrack"></div>
+                            </div>
+                            <div class="feedback-carousel-dots" id="feedbackCarouselDots"></div>
+                        </div>
+                    </div>
+
+                    <div class="profile-tab-panel" id="tabSettings">
+                        <h2 style="font-size:1.4rem; margin-bottom: var(--space-md);">Manage Your Profile</h2>
+                        <form id="profileForm" class="card" style="padding: var(--space-lg);">
+                            <div class="form-field">
+                                <label for="profileName">Full Name</label>
+                                <input type="text" id="profileName" autocomplete="name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="profileEmail">Email Address</label>
+                                <input type="email" id="profileEmail" autocomplete="email" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="profilePassword">New Password</label>
+                                <input type="password" id="profilePassword" autocomplete="new-password" placeholder="Leave blank to keep current password">
+                            </div>
+                            <p id="profileMessage" style="font-size:0.85rem; margin-bottom: var(--space-md);"></p>
+                            <div style="display:flex; gap: var(--space-sm); flex-wrap: wrap;">
+                                <button class="btn btn-primary" id="updateProfileButton" type="submit">Update Profile</button>
+                                <button class="btn btn-danger" id="deleteProfileButton" type="button">Delete Account</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-bottom"><span>&copy; 2026 Luna Cove Estate. All rights reserved.</span></div>
+</footer>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/vendor/qrcode.min.js"></script>
+<script src="assets/js/qr-helper.js"></script>
+<script src="assets/js/profile.js"></script>
+</body>
+</html>

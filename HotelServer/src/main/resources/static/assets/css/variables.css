@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Luna Cove — Design Tokens
+   ========================================================================== */
+:root {
+    /* Color palette */
+    --color-bg: #0c0c0d;
+    --color-bg-alt: #131315;
+    --color-surface: #ffffff;
+    --color-surface-soft: #faf8f5;
+    --color-ink: #1a1814;
+    --color-ink-soft: #5a564e;
+    --color-line: rgba(26, 24, 20, 0.1);
+    --color-line-dark: rgba(255, 255, 255, 0.12);
+
+    --color-gold: #c8a45e;
+    --color-gold-light: #e3c98a;
+    --color-gold-dark: #9c7d3f;
+    --color-cream: #f4ede1;
+
+    --color-danger: #c0584a;
+    --color-success: #5a8a6b;
+
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-bg-light: rgba(255, 255, 255, 0.65);
+    --glass-border-light: rgba(26, 24, 20, 0.08);
+
+    /* Typography */
+    --font-display: 'Cormorant Garamond', 'Georgia', serif;
+    --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+
+    /* Spacing scale */
+    --space-3xs: 0.25rem;
+    --space-2xs: 0.5rem;
+    --space-xs: 0.75rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: 9rem;
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-pill: 999px;
+
+    /* Shadow */
+    --shadow-sm: 0 4px 16px rgba(20, 18, 14, 0.06);
+    --shadow-md: 0 12px 32px rgba(20, 18, 14, 0.1);
+    --shadow-lg: 0 24px 60px rgba(20, 18, 14, 0.16);
+    --shadow-gold: 0 12px 32px rgba(200, 164, 94, 0.28);
+
+    /* Motion */
+    --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+    --t-fast: 180ms;
+    --t-med: 320ms;
+    --t-slow: 600ms;
+
+    /* Layout */
+    --container-max: 1320px;
+    --nav-height: 84px;
+    --z-nav: 100;
+    --z-toast: 500;
+    --z-modal: 400;
+    --z-back-to-top: 90;
+}

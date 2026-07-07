@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Cove | Sign In</title>
+    <script src="server-redirect.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="auth-page" data-guest-only-page>
+
+<div class="page-veil"><div class="page-veil-mark">LUNA COVE<div class="page-veil-bar"></div></div></div>
+
+<div class="auth-bg" style="background-image: url('image/private-dining-hero.jpg');"></div>
+<div class="auth-scrim"></div>
+
+<div class="auth-topbar">
+    <a class="nav-brand" href="index.html" aria-label="Luna Cove home">
+        <span class="brand-title">LUNA COVE</span>
+    </a>
+    <a class="auth-back-home" href="index.html">&larr; Back to home</a>
+</div>
+
+<main class="auth-shell glass-card scale-in">
+    <p class="eyebrow">Welcome Back</p>
+    <h1>Sign In</h1>
+    <p class="auth-sub">Access your concierge desk, manage active table reservations, and review curated seasonal orders.</p>
+
+    <form id="loginForm" novalidate>
+        <div class="form-field-float">
+            <input id="loginEmail" type="email" placeholder=" " autocomplete="email" required>
+            <label for="loginEmail">Email Address</label>
+            <span class="field-error"></span>
+        </div>
+
+        <div class="form-field-float">
+            <input id="loginPassword" type="password" placeholder=" " autocomplete="current-password" required>
+            <label for="loginPassword">Password</label>
+            <span class="field-error"></span>
+        </div>
+
+        <div class="auth-divider-row">
+            <div class="checkbox-row">
+                <input type="checkbox" id="rememberMe" checked>
+                <label for="rememberMe">Remember me</label>
+            </div>
+            <a class="forgot-link" href="#" id="forgotPasswordLink">Forgot password?</a>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit">Access Account</button>
+    </form>
+
+    <div class="auth-switch">
+        New to the Estate? <a href="register.html">Create an account</a>
+    </div>
+</main>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+    document.getElementById("forgotPasswordLink").addEventListener("click", (e) => {
+        e.preventDefault();
+        window.Luna.confirmDialog({
+            title: "Reset your password",
+            message: "Please contact our concierge team at concierge@lunacove.lk and we'll help you regain access to your account.",
+            confirmLabel: "Got it",
+            cancelLabel: "Close"
+        });
+    });
+</script>
+</body>
+</html>

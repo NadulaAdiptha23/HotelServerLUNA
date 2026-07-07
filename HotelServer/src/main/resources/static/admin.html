@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Cove | Executive Operations</title>
+    <script src="server-redirect.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="admin-page" data-requires-admin>
+
+<div class="page-veil"><div class="page-veil-mark">LUNA COVE<div class="page-veil-bar"></div></div></div>
+
+<div class="admin-shell">
+
+    <aside class="admin-sidebar">
+        <div style="width:100%;">
+            <a class="nav-brand" href="index.html">
+                <span class="brand-title">LUNA COVE</span>
+                <span class="brand-subtitle">Control Center</span>
+            </a>
+            <nav class="admin-nav-list" aria-label="Admin sections">
+                <button class="admin-nav-item is-active" type="button" data-section="dashboard">Operational Overview</button>
+                <button class="admin-nav-item" type="button" data-section="floor">Live Floor Status</button>
+                <button class="admin-nav-item" type="button" data-section="users">Guest Registry</button>
+                <button class="admin-nav-item" type="button" data-section="menu">Provisions Catalog</button>
+                <button class="admin-nav-item" type="button" data-section="tables">Seating Inventory</button>
+                <button class="admin-nav-item" type="button" data-section="feedbacks">Guest Sentiment</button>
+                <button class="admin-nav-item" type="button" data-section="payments">Settlement Registry</button>
+                <button class="admin-nav-item" type="button" data-section="reservations">Active Dockets</button>
+            </nav>
+        </div>
+        <div class="admin-sidebar-footer">
+            <p id="adminSessionLabel" style="margin: 0 0 var(--space-sm) 0;">No admin session detected.</p>
+            <button class="btn btn-outline btn-sm btn-block" data-logout-button type="button">Terminate Session</button>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+
+        <header class="admin-header">
+            <div>
+                <p class="eyebrow" style="margin-bottom:0;">Estate Control Engine</p>
+                <h1 id="sectionTitle">Dashboard</h1>
+                <p id="sectionSubtitle" class="section-copy" style="font-size:0.9rem;">Monitor restaurant activity and open each section to manage records.</p>
+            </div>
+            <div class="admin-header-actions">
+                <a class="text-link" href="index.html">Return Home</a>
+                <button class="btn btn-dark btn-sm" id="refreshAdmin" type="button">Refresh Data</button>
+            </div>
+        </header>
+
+        <div id="accessBanner" class="access-banner" hidden>
+            This terminal is intended explicitly for verified ADMIN accounts. Please authenticate with an administrative profile to use these features.
+        </div>
+
+        <p id="adminStatus" style="font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; color: var(--color-ink-soft); margin-bottom: var(--space-md);">System loop operational.</p>
+
+        <!-- Dashboard -->
+        <section id="dashboardPanel">
+            <article class="card overview-card" style="margin-bottom: var(--space-lg);">
+                <div class="overview-card-head">
+                    <h2 style="font-size:1.3rem;">Live Floor Status <span class="live-dot" aria-hidden="true"></span></h2>
+                    <button class="link-action" type="button" data-section="floor">Open Full Floor View</button>
+                </div>
+                <div class="floor-grid floor-grid-compact" id="dashboardFloorPreview"></div>
+            </article>
+
+            <div class="metrics-grid">
+                <button class="metric-card" type="button" data-section="users"><span class="metric-value" id="adminUsersCount">0</span><span class="metric-label">Users</span></button>
+                <button class="metric-card" type="button" data-section="menu"><span class="metric-value" id="adminMenuCount">0</span><span class="metric-label">Menu Items</span></button>
+                <button class="metric-card" type="button" data-section="tables"><span class="metric-value" id="adminTablesCount">0</span><span class="metric-label">Tables</span></button>
+                <button class="metric-card" type="button" data-section="reservations"><span class="metric-value" id="adminReservationsCount">0</span><span class="metric-label">Reservations</span></button>
+                <button class="metric-card" type="button" data-section="payments"><span class="metric-value" id="adminPaymentsCount">0</span><span class="metric-label">Payments</span></button>
+                <button class="metric-card" type="button" data-section="feedbacks"><span class="metric-value" id="adminFeedbacksCount">0</span><span class="metric-label">Feedbacks</span></button>
+            </div>
+
+            <div class="overview-grid">
+                <article class="card overview-card">
+                    <div class="overview-card-head"><h2 style="font-size:1.3rem;">Reservations by Tier</h2></div>
+                    <div class="bar-chart" id="revenueChart"></div>
+                </article>
+                <article class="card overview-card">
+                    <div class="overview-card-head"><h2 style="font-size:1.3rem;">Revenue by Method</h2></div>
+                    <div id="revenueByMethod"></div>
+                </article>
+            </div>
+
+            <div class="overview-grid">
+                <article class="card overview-card">
+                    <div class="overview-card-head"><h2 style="font-size:1.3rem;">Latest Bookings</h2><button class="link-action" type="button" data-section="reservations">View All</button></div>
+                    <div id="dashboardReservationsTable"></div>
+                </article>
+                <article class="card overview-card">
+                    <div class="overview-card-head"><h2 style="font-size:1.3rem;">Recent Payments</h2><button class="link-action" type="button" data-section="payments">View All</button></div>
+                    <div id="dashboardPaymentsTable"></div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Live Floor Status -->
+        <section class="admin-section-panel" id="floorPanel" hidden>
+            <article class="card overview-card">
+                <div class="floor-legend">
+                    <span class="floor-legend-item"><span class="floor-dot floor-available"></span> Available</span>
+                    <span class="floor-legend-item"><span class="floor-dot floor-reserved"></span> Reserved — awaiting arrival</span>
+                    <span class="floor-legend-item"><span class="floor-dot floor-occupied"></span> Occupied — order paid</span>
+                    <span class="floor-legend-item floor-refresh-note">Auto-refreshes every 6 seconds</span>
+                </div>
+                <div class="floor-grid" id="floorGrid"></div>
+            </article>
+        </section>
+
+        <!-- Users -->
+        <section class="admin-section-panel" id="usersPanel" hidden>
+            <article class="card admin-form-card">
+                <div class="admin-form-head">
+                    <div><p class="eyebrow">Profile Modification</p><h2 style="font-size:1.4rem;">Edit User Account</h2></div>
+                    <button class="link-action" id="userCancelEdit" type="button" hidden style="color: var(--color-danger);">Cancel</button>
+                </div>
+                <form id="userForm" class="admin-form-grid">
+                    <input id="userId" type="hidden">
+                    <div class="form-field"><label>Full Name</label><input id="userName" type="text" readonly></div>
+                    <div class="form-field"><label>Email</label><input id="userEmail" type="email" readonly></div>
+                    <div class="form-field"><label>Role</label><select id="userRole"><option value="CUSTOMER">Customer</option><option value="ADMIN">Admin</option></select></div>
+                    <button class="btn btn-primary" id="userSubmitButton" type="submit">Update Account Authority</button>
+                </form>
+            </article>
+            <article class="card overview-card">
+                <div class="admin-toolbar"><h2 style="font-size:1.3rem; margin:0;">Registered Accounts</h2><input class="admin-search-input" id="usersSearch" type="search" placeholder="Search users…"></div>
+                <div id="adminUsersList"></div>
+            </article>
+        </section>
+
+        <!-- Menu -->
+        <section class="admin-section-panel" id="menuPanel" hidden>
+            <article class="card admin-form-card">
+                <div class="admin-form-head">
+                    <div><p class="eyebrow">Culinary Master Inventory</p><h2 style="font-size:1.4rem;">Add or Edit Menu Items</h2></div>
+                    <button class="link-action" id="menuCancelEdit" type="button" hidden style="color: var(--color-danger);">Cancel</button>
+                </div>
+                <form id="menuForm" class="admin-form-grid">
+                    <input id="menuItemId" type="hidden">
+                    <div class="form-field"><label>Item Name</label><input id="menuItemName" type="text" required></div>
+                    <div class="form-field"><label>Category</label><select id="menuItemCategory" required><option value="FOOD">Food</option><option value="DRINK">Drink</option><option value="DESSERT">Dessert</option></select></div>
+                    <div class="form-field"><label>Price (LKR)</label><input id="menuItemPrice" type="number" min="0" step="0.01" required></div>
+                    <button class="btn btn-primary" id="menuSubmitButton" type="submit">Commit Provision Entry</button>
+                </form>
+            </article>
+            <article class="card overview-card">
+                <div class="admin-toolbar"><h2 style="font-size:1.3rem; margin:0;">Food &amp; Drinks Manifest</h2><input class="admin-search-input" id="menuSearch" type="search" placeholder="Search menu…"></div>
+                <div id="adminMenuList"></div>
+            </article>
+        </section>
+
+        <!-- Tables -->
+        <section class="admin-section-panel" id="tablesPanel" hidden>
+            <article class="card admin-form-card">
+                <div class="admin-form-head">
+                    <div><p class="eyebrow">Spatial Configurator</p><h2 style="font-size:1.4rem;">Manage Table Inventory</h2></div>
+                    <button class="link-action" id="tableCancelEdit" type="button" hidden style="color: var(--color-danger);">Cancel</button>
+                </div>
+                <form id="tableForm" class="admin-form-grid">
+                    <input id="tableId" type="hidden">
+                    <div class="form-field"><label>Table Number</label><input id="tableNumber" type="number" min="1" required></div>
+                    <div class="form-field"><label>Max Capacity</label><input id="tableCapacity" type="number" min="1" required></div>
+                    <div class="form-field"><label>Tier Type</label><select id="tableType" required><option value="SOLO">Solo</option><option value="DOUBLE">Double</option><option value="DELUXE">Deluxe</option></select></div>
+                    <div class="form-field"><label>Price (LKR)</label><input id="tablePrice" type="number" min="0" step="0.01" required></div>
+                    <div class="form-field"><label>Availability</label><select id="tableAvailable" required><option value="true">Available</option><option value="false">Booked</option></select></div>
+                    <button class="btn btn-primary" id="tableSubmitButton" type="submit">Save Table Blueprint</button>
+                </form>
+            </article>
+            <article class="card overview-card">
+                <div class="admin-toolbar"><h2 style="font-size:1.3rem; margin:0;">Physical Estate Overview</h2><input class="admin-search-input" id="tablesSearch" type="search" placeholder="Search tables…"></div>
+                <div id="tablesList"></div>
+            </article>
+        </section>
+
+        <!-- Feedbacks -->
+        <section class="admin-section-panel" id="feedbacksPanel" hidden>
+            <article class="card overview-card">
+                <div class="admin-toolbar"><h2 style="font-size:1.3rem; margin:0;">Guest Reviews</h2><input class="admin-search-input" id="feedbacksSearch" type="search" placeholder="Search feedback…"></div>
+                <div id="feedbacksList"></div>
+            </article>
+        </section>
+
+        <!-- Payments -->
+        <section class="admin-section-panel" id="paymentsPanel" hidden>
+            <article class="card overview-card">
+                <div class="admin-toolbar"><h2 style="font-size:1.3rem; margin:0;">Settlement Logs</h2><input class="admin-search-input" id="paymentsSearch" type="search" placeholder="Search payments…"></div>
+                <div id="paymentsList"></div>
+            </article>
+        </section>
+
+        <!-- Reservations -->
+        <section class="admin-section-panel" id="reservationsPanel" hidden>
+            <article class="card overview-card">
+                <div class="admin-toolbar"><h2 style="font-size:1.3rem; margin:0;">Active Booking Manifests</h2><input class="admin-search-input" id="reservationsSearch" type="search" placeholder="Search reservations…"></div>
+                <div id="adminReservationsList"></div>
+            </article>
+        </section>
+
+        <footer style="margin-top: var(--space-xl); border-top: 1px solid var(--color-line); padding-top: var(--space-md); display:flex; justify-content:space-between; flex-wrap:wrap; gap: var(--space-sm); font-size:0.8rem; color: var(--color-ink-soft);">
+            <span>&copy; 2026 Luna Cove Core Server Registry.</span>
+        </footer>
+
+    </main>
+</div>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

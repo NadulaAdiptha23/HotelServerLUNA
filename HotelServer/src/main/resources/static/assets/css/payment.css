@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Luna Cove — Payment / Checkout Page
+   ========================================================================== */
+
+.payment-hero { background: var(--color-surface); padding: var(--space-xl) 0 var(--space-md); }
+.payment-hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: var(--space-2xs); }
+
+.checkout-layout { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--space-2xl); align-items: start; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+.detail-item { display: flex; flex-direction: column; gap: 4px; }
+.detail-item span.label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-soft); }
+.detail-item span.value { font-size: 0.95rem; color: var(--color-ink); }
+
+/* Payment method tabs */
+.payment-method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-lg); }
+.payment-method-option {
+    border: 1.5px solid var(--color-line);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    cursor: pointer;
+    text-align: center;
+    transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.payment-method-option:hover { border-color: var(--color-gold-dark); }
+.payment-method-option.is-active { border-color: var(--color-gold); box-shadow: var(--shadow-gold); }
+.payment-method-option .pm-icon { font-size: 1.6rem; margin-bottom: var(--space-2xs); }
+.payment-method-option strong { display: block; font-size: 0.88rem; }
+.payment-method-option span { font-size: 0.74rem; color: var(--color-ink-soft); }
+
+/* Credit Card mock UI */
+.credit-card-visual {
+    aspect-ratio: 16/9.5;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, #1f1c14, #322a18 60%, #4a3a1d);
+    color: #fff;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+.credit-card-visual::after {
+    content: ""; position: absolute; right: -40px; top: -40px; width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(200,164,94,0.35), transparent 70%);
+}
+.cc-chip { width: 42px; height: 32px; border-radius: 6px; background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-dark)); }
+.cc-number { font-family: 'Courier New', monospace; font-size: 1.2rem; letter-spacing: 0.16em; }
+.cc-row { display: flex; justify-content: space-between; align-items: flex-end; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+.cc-row strong { display: block; font-size: 0.85rem; color: #fff; text-transform: none; letter-spacing: 0.02em; margin-top: 4px; }
+
+.card-form { margin-top: var(--space-lg); }
+
+/* QR pay */
+.qr-pay-wrap { text-align: center; padding: var(--space-lg) 0; }
+.qr-box {
+    width: 200px; height: 200px;
+    margin: 0 auto var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-line);
+    display: flex; align-items: center; justify-content: center;
+    background:
+        repeating-linear-gradient(45deg, var(--color-ink) 0 6px, transparent 6px 12px) 0 0/60px 60px,
+        #fff;
+    background-blend-mode: multiply;
+    position: relative;
+}
+.qr-box::before {
+    content: "";
+    position: absolute; inset: 14px;
+    background: #fff;
+    border-radius: var(--radius-sm);
+}
+.qr-box span { position: relative; z-index: 1; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-soft); }
+
+/* Order item rows on summary */
+.payment-order-item { display: flex; justify-content: space-between; gap: var(--space-sm); font-size: 0.88rem; padding: var(--space-2xs) 0; }
+.payment-order-item span { display: block; font-size: 0.74rem; color: var(--color-ink-soft); }
+
+/* Success / receipt */
+.payment-success-panel { text-align: center; padding: var(--space-2xl) var(--space-lg); }
+.receipt-card {
+    max-width: 420px;
+    margin: var(--space-lg) auto 0;
+    text-align: left;
+    padding: var(--space-lg);
+    border: 1px dashed var(--color-line);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-soft);
+}
+.receipt-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.86rem; border-bottom: 1px dotted var(--color-line); }
+.receipt-row:last-child { border-bottom: none; }
+.receipt-total { font-family: var(--font-display); font-size: 1.4rem; color: var(--color-gold-dark); }
+
+@media (max-width: 960px) {
+    .checkout-layout { grid-template-columns: 1fr; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .payment-method-grid { grid-template-columns: 1fr; }
+}

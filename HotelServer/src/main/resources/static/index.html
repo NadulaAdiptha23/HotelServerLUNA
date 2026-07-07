@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Cove | Bespoke Coastal Dining</title>
+    <script src="server-redirect.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="home-page">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="page-veil"><div class="page-veil-mark">LUNA COVE<div class="page-veil-bar"></div></div></div>
+
+<nav class="site-nav">
+    <a class="nav-brand" href="index.html" aria-label="Luna Cove home">
+        <span class="brand-title">LUNA COVE</span>
+        <span class="brand-subtitle">Bespoke Dining</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="#about" class="nav-link">Our Story</a>
+        <a href="menu.html" class="nav-link">The Menu</a>
+        <a href="tables.html" class="nav-link">The Tables</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+        <div data-guest-only>
+            <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+        </div>
+        <div data-auth-only hidden style="display:flex; align-items:center; gap: 12px;">
+            <a href="profile.html" class="nav-user-chip">
+                <span class="avatar-circle" data-user-initials>GU</span>
+                <span data-user-label>Guest</span>
+            </a>
+        </div>
+        <a href="tables.html" class="btn btn-primary btn-sm" data-action="book-table">Reserve</a>
+        <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<main id="main">
+
+    <header class="hero">
+        <div class="hero-bg" style="background-image: url('image/hero-clean.jpg');"></div>
+        <div class="hero-scrim"></div>
+        <div class="hero-content fade-up">
+            <p class="hero-kicker">Welcome to Luna Cove</p>
+            <h1 class="hero-title">Culinary Craft.<br><em>Coastal Serenity.</em></h1>
+            <p class="hero-sub">Immerse yourself in an intimate dining experience where local coastal flavors meet refined artisan mastery.</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="tables.html" data-action="book-table">Reserve A Table</a>
+                <a class="hero-phone" href="tel:+94762990752">+94 76 299 0752</a>
+            </div>
+        </div>
+        <div class="hero-scroll-cue"><span>Scroll</span><span class="cue-line"></span></div>
+    </header>
+
+    <!-- Restaurant Introduction -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="eyebrow">The Experience</p>
+                <h2 class="section-title">A Feast for the Senses</h2>
+                <div class="accent-line"></div>
+                <p class="section-copy">Every detail is thoughtfully orchestrated to create an unforgettable dining escape, from the first pour to the final course.</p>
+            </div>
+
+            <div class="grid grid-3 intro-grid">
+                <article class="card experience-card reveal reveal-delay-1">
+                    <div class="num">01</div>
+                    <h3>Artisan Ingredients</h3>
+                    <p>Sourced daily from chosen local farms, organic micro-producers, and pristine coastal waters.</p>
+                </article>
+                <article class="card experience-card reveal reveal-delay-2">
+                    <div class="num">02</div>
+                    <h3>Curated Menu</h3>
+                    <p>A brilliant evolution of modern technique harmonized with timeless seasonal classics.</p>
+                </article>
+                <article class="card experience-card reveal reveal-delay-3">
+                    <div class="num">03</div>
+                    <h3>Bespoke Hospitality</h3>
+                    <p>Intuitive, personalized table service crafted around the natural rhythm of your evening.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Dishes -->
+    <section class="section" style="background: var(--color-surface);">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="eyebrow">From The Kitchen</p>
+                <h2 class="section-title">Featured Dishes</h2>
+                <div class="accent-line"></div>
+                <p class="section-copy">A glimpse of the seasonal plates our guests return for, again and again.</p>
+            </div>
+
+            <div class="grid grid-4">
+                <article class="card dish-card reveal reveal-delay-1">
+                    <div class="dish-image-wrap">
+                        <img src="image/italian-food-9.jpg" alt="Signature seafood pasta" loading="lazy">
+                        <span class="dish-tag">Signature</span>
+                    </div>
+                    <div class="dish-body">
+                        <div class="dish-top"><h3>Coastal Linguine</h3><span class="dish-price">LKR 3,200</span></div>
+                        <p>Hand-rolled linguine, sea-caught prawns, charred lemon, garden basil.</p>
+                    </div>
+                </article>
+                <article class="card dish-card reveal reveal-delay-2">
+                    <div class="dish-image-wrap">
+                        <img src="image/hero-clean.jpg" alt="Wood-fired truffle flatbread" loading="lazy">
+                        <span class="dish-tag">Best Seller</span>
+                    </div>
+                    <div class="dish-body">
+                        <div class="dish-top"><h3>Tartufo Flatbread</h3><span class="dish-price">LKR 2,650</span></div>
+                        <p>Wood-fired dough, black truffle cream, wild mushroom, aged parmesan.</p>
+                    </div>
+                </article>
+                <article class="card dish-card reveal reveal-delay-3">
+                    <div class="dish-image-wrap">
+                        <img src="image/italian-food-19.jpg" alt="Herb crusted chicken" loading="lazy">
+                        <span class="dish-tag">Seasonal</span>
+                    </div>
+                    <div class="dish-body">
+                        <div class="dish-top"><h3>Herb-Crusted Poulet</h3><span class="dish-price">LKR 3,850</span></div>
+                        <p>Free-range chicken, rosemary jus, roasted root vegetables.</p>
+                    </div>
+                </article>
+                <article class="card dish-card reveal reveal-delay-4">
+                    <div class="dish-image-wrap">
+                        <img src="image/italian-food-25.jpg" alt="Artisan dessert" loading="lazy">
+                        <span class="dish-tag">Sweet</span>
+                    </div>
+                    <div class="dish-body">
+                        <div class="dish-top"><h3>Affogato Classico</h3><span class="dish-price">LKR 1,400</span></div>
+                        <p>Vanilla bean gelato, double espresso, candied hazelnut.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div style="text-align:center; margin-top: var(--space-xl);" class="reveal">
+                <a href="menu.html" class="btn btn-ghost">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef's Specials -->
+    <section class="section specials-section">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Curated By Our Chef</p>
+                <h2 class="section-title">Chef's Specials</h2>
+                <div class="accent-line"></div>
+                <p class="section-copy">A rotating tasting selection, designed exclusively each season by our Executive Chef.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <article class="special-card reveal reveal-delay-1" style="background-image: url('image/chef-special-risotto.jpg');">
+                    <span class="chef-badge">Chef's Choice</span>
+                    <h3>Midnight Risotto</h3>
+                    <p>Squid ink arborio, charred octopus, saffron foam, micro herbs.</p>
+                    <span class="dish-price">LKR 4,400</span>
+                </article>
+                <article class="special-card reveal reveal-delay-2" style="background-image: url('image/chef-special-lamb.jpg');">
+                    <span class="chef-badge">Limited Edition</span>
+                    <h3>Estate Lamb Loin</h3>
+                    <p>Slow-roasted lamb, blackberry jus, smoked aubergine purée.</p>
+                    <span class="dish-price">LKR 5,200</span>
+                </article>
+                <article class="special-card reveal reveal-delay-3" style="background-image: url('image/chef-special-journey.jpg');">
+                    <span class="chef-badge">Tasting Menu</span>
+                    <h3>The Cove Journey</h3>
+                    <p>A seven-course tasting experience showcasing the season's finest produce.</p>
+                    <span class="dish-price">LKR 9,800</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Dining / Story -->
+    <section class="section" id="private-dining">
+        <div class="container">
+            <div class="private-dining">
+                <div class="private-dining-visual reveal">
+                    <img src="image/private-dining-hero.jpg" alt="Elegant private dining table setting at Luna Cove" loading="lazy">
+                </div>
+                <div class="reveal reveal-delay-1">
+                    <p class="eyebrow">Private Dining</p>
+                    <h2 class="section-title" style="text-align:left;">Where Passion Meets the Horizon</h2>
+                    <div class="accent-line" style="margin-left:0;"></div>
+                    <p class="section-copy">Luna Cove is more than a dining hall; it is an intimate sanctuary engineered for unhurried conversations, deep connections, and remarkable sensory moments.</p>
+                    <ul class="private-dining-list">
+                        <li>Exclusive use rooms for up to 24 guests</li>
+                        <li>Bespoke tasting menus curated with our Executive Chef</li>
+                        <li>Dedicated sommelier and personal table service</li>
+                        <li>Tailored celebrations, corporate dinners & intimate events</li>
+                    </ul>
+                    <div style="margin-top: var(--space-lg);">
+                        <a class="btn btn-ghost" href="#contact" style="border-width: 1.5px; border-color: var(--color-gold-dark); font-weight: 700;">Enquire About Private Dining &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section" id="gallery" style="background: var(--color-surface);">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Moments At Luna Cove</p>
+                <h2 class="section-title">Gallery</h2>
+                <div class="accent-line"></div>
+            </div>
+            <div class="gallery-grid reveal">
+                <div class="gallery-item"><img src="image/gallery-chef-pasta.jpg" alt="Chef presenting a signature pasta dish" loading="lazy"></div>
+                <div class="gallery-item"><img src="image/italian-food-17.jpg" alt="Plated dish" loading="lazy"></div>
+                <div class="gallery-item"><img src="image/italian-food-29.jpg" alt="Dessert plating" loading="lazy"></div>
+                <div class="gallery-item"><img src="image/358cc8b226634605a73e449b48178367.jpg" alt="Craft cocktail service" loading="lazy"></div>
+                <div class="gallery-item"><img src="image/italian-food-31.jpg" alt="Chef plating detail" loading="lazy"></div>
+                <div class="gallery-item"><img src="image/gallery-evening-cocktail.jpg" alt="Evening cocktail at the bar" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Guest Voices</p>
+                <h2 class="section-title">Testimonials</h2>
+                <div class="accent-line"></div>
+            </div>
+            <div class="testimonial-track">
+                <article class="card testimonial-card reveal reveal-delay-1">
+                    <span class="testimonial-quote-mark">"</span>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="quote">An unforgettable evening — every course told a story. The private dining room was the perfect setting for our anniversary.</p>
+                    <div class="testimonial-person">
+                        <div class="testimonial-avatar">NR</div>
+                        <div><strong>Nadeesha R.</strong><span>Colombo</span></div>
+                    </div>
+                </article>
+                <article class="card testimonial-card reveal reveal-delay-2">
+                    <span class="testimonial-quote-mark">"</span>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="quote">Service that feels effortless yet deeply considered. The tasting menu remains the best meal we've had this year.</p>
+                    <div class="testimonial-person">
+                        <div class="testimonial-avatar">AJ</div>
+                        <div><strong>Arun J.</strong><span>Kandy</span></div>
+                    </div>
+                </article>
+                <article class="card testimonial-card reveal reveal-delay-3">
+                    <span class="testimonial-quote-mark">"</span>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="quote">From the warm welcome to the final espresso, everything at Luna Cove felt intentional and beautifully crafted.</p>
+                    <div class="testimonial-person">
+                        <div class="testimonial-avatar">SP</div>
+                        <div><strong>Sanduni P.</strong><span>Galle</span></div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation CTA -->
+    <section class="section section-cta">
+        <div class="reservation-cta reveal">
+            <div class="reservation-cta-inner">
+                <p class="eyebrow" style="color: var(--color-gold-light);">Reserve Your Evening</p>
+                <h2>Let Us Prepare Your Table</h2>
+                <p>Secure your seat at Luna Cove and let our team craft an evening built entirely around you.</p>
+                <a class="btn btn-primary" href="tables.html" data-action="book-table">Reserve a Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Reservations & Inquiries</p>
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="accent-line"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="reveal">
+                    <p class="section-copy">Connect directly with our guest services team to coordinate private dining arrangements, event buyouts, or specific dietary styling.</p>
+                    <div class="contact-info-list">
+                        <div class="contact-info-row card">
+                            <span class="icon-badge">☎</span>
+                            <div><strong>Direct Line</strong><span>+94 71 898 5818</span></div>
+                        </div>
+                        <div class="contact-info-row card">
+                            <span class="icon-badge">✉</span>
+                            <div><strong>Concierge Email</strong><span>concierge@lunacove.lk</span></div>
+                        </div>
+                        <div class="contact-info-row card">
+                            <span class="icon-badge">📍</span>
+                            <div><strong>The Estate</strong><span>Kaduwela Road, Malabe</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="card contact-form-card reveal reveal-delay-1" id="contactForm" novalidate>
+                    <div class="form-field">
+                        <label for="contactName">Full Name</label>
+                        <input type="text" id="contactName" required placeholder="Your name">
+                        <span class="field-error-msg">Please enter your full name.</span>
+                    </div>
+                    <div class="form-field">
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" required placeholder="you@example.com">
+                        <span class="field-error-msg">Please enter a valid email address.</span>
+                    </div>
+                    <div class="form-field">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" required placeholder="How can we help?"></textarea>
+                        <span class="field-error-msg">Please share a short message.</span>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="brand-title">LUNA COVE</span>
+                <p>A bespoke coastal dining destination — culinary craft, considered hospitality, unforgettable evenings.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="X">X</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="menu.html">The Menu</a>
+                <a href="tables.html">The Tables</a>
+                <a href="#about">Our Story</a>
+                <a href="#gallery">Gallery</a>
+            </div>
+            <div class="footer-col">
+                <h4>Account</h4>
+                <a href="login.html">Sign In</a>
+                <a href="register.html">Register</a>
+                <a href="profile.html">My Profile</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <span>+94 71 898 5818</span>
+                <span>concierge@lunacove.lk</span>
+                <span>Kaduwela Road, Malabe</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Luna Cove Estate. All rights reserved.</span>
+            <span>Crafted with care for discerning guests.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>
